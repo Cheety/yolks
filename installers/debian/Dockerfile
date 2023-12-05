@@ -20,7 +20,7 @@
 # SOFTWARE.
 #
 
-FROM        --platform=$TARGETOS/$TARGETARCH debian:bullseye-slim
+FROM        --platform=$TARGETOS/$TARGETARCH debian:bullseye
 
 LABEL       author="Matthew Penner" maintainer="matthew@pterodactyl.io"
 
@@ -30,7 +30,7 @@ LABEL       org.opencontainers.image.licenses=MIT
 ENV         DEBIAN_FRONTEND=noninteractive
 
 RUN      apt update && apt upgrade -y \
-         && apt -y --no-install-recommends install ca-certificates curl git unzip zip tar jq wget zlib1g zlib1g:i386
+         && apt -y --no-install-recommends install ca-certificates curl git unzip zip tar jq wget zlib1g
 
 # Only install the needed steamcmd packages on the AMD64 build
 RUN         if [ "$(uname -m)" = "x86_64" ]; then \
